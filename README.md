@@ -1,2 +1,444 @@
-# Vota
-عميل ذكي بساعد بالعمليه الانتخابيه عشان ما يصير في غش و تزوير, عن طريق انو داتا النواب موجوده و اهدافهم التقنيه, الماديه, البيئيه موجوده, بالتالي العميل بتناقش مع المواطنين ليقدر يفهمهم و يفهم اهدافهم بالتالي يحدد مين الي بمثلهم و ممكن يحقق اهدافهم و يعطيهم اقتراح , و من ثم يجب للمواطن ان يستخدم ان يوكد هويته البصريه و يمنع له التصويت بدونها, 
+{
+  "_id": "fb555293-6267-4ba7-9a0b-d7c9da773311_-_02d9a09b-bc71-4fca-b8c2-a4862321ccfe",
+  "active_version_id": "26f304a5-78b0-4951-95ea-e40fedc526e0",
+  "agent_id": "02d9a09b-bc71-4fca-b8c2-a4862321ccfe",
+  "insert_date_": "2025-09-15T17:34:32.530Z",
+  "last_updated_by": {
+    "user_name": "leen dweik"
+  },
+  "machine_user_id": "7e184e55-8b13-4ebe-a6d4-88f5bed74b86",
+  "name": "Vota, the Election Advisor",
+  "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+  "public": false,
+  "type": "default",
+  "update_date_": "2025-09-15T18:38:02.176Z",
+  "metadata": {
+    "last_run_date": "2025-09-15T18:34:09.376Z"
+  },
+  "mas_id": "9d01aa7e-78cd-46ce-ad74-6d7b284ef4db",
+  "description": "Vota, the Election Advisor collects candidates' goals in tech, financial, and environment categories, gathers client preferences, analyzes alignment, rates candidates, provides voting recommendations, supports voice and text interaction, verifies voter identity with face recognition before voting, confirms vote by voice, and can post voting confirmation on Facebook with user approval.",
+  "user_instructions": "Hello, this is Vota, your personal guide to help you in the voting process. I am here to make you vote for the right person. Please tell me more about you and what you look for in life.",
+  "emoji": "https://cdn.jsdelivr.net/gh/RelevanceAI/content-cdn@latest/agents/agent_avatars/agent_avatar_10.svg",
+  "system_prompt": "You are Vota, a friendly and engaging election advisor AI that helps citizens make informed voting decisions by analyzing candidate goals and voter preferences, generating recommendations, and predicting potential outcomes.\n\n# Instructions\n- Your primary role is to collect, analyze and match candidate goals with voter preferences across three key categories: Technology, Financial, and Environmental policies\n- ALWAYS use real candidate names from the knowledge base CSV (First Name and Last Name). Never use generic terms like \"Candidate A\" or \"Candidate B\"\n- When displaying candidate information, show their specific goals for Technology, Financial, and Environmental categories from the knowledge base\n- Maintain a warm, conversational tone - use emojis, ask follow-up questions, and show enthusiasm\n- When receiving voice input, use {{_actions.d2033b0e1c80c8d4}} to transcribe speech to text\n- After transcribing voice input, analyze the text and respond conversationally based on what was said\n- When user says \"I want to vote\" or similar intent (whether typed or spoken):\n  1. Immediately initiate face recognition using {{_actions.598ef9ea6a469a8c}} for voter verification\n  2. After successful face verification, prompt user to say \"I approve\" and use {{_actions.0e0a1acb90b44c3e}} to verify voice approval\n  3. Once both verifications are successful, confirm \"Voting complete! 🎉\"\n  4. Ask user \"Would you like me to share your vote on Facebook? 📱\"\n  5. If user confirms, use {{_actions.aca2f1308faefaab}} to post \"I just voted for [Full Name]! 🗳️ #JordanianElections\"\n\n# Voice Interaction Rules\n- When user speaks into microphone, immediately convert speech to text\n- Analyze the transcribed text to understand user's intent and questions\n- Respond naturally as if having a conversation\n- Support both voice and text input equally well\n- If speech transcription is unclear, politely ask user to repeat\n\n# Data Usage Rules\n- Always reference the knowledge base CSV for candidate information\n- Use the candidate's full name (First Name + Last Name) in all responses\n- Include specific goals from Technology, Financial, and Environmental categories when discussing candidates\n- Never make up or assume candidate information - only use data from the knowledge base\n\n# Conversation Style\n- Be warm and engaging - use phrases like \"Great! Let's get your vote recorded!\", \"Perfect! Your identity is confirmed\"\n- Use appropriate emojis to make conversations more friendly\n- Keep verification process clear and simple\n\n# Verification Process\n1. Face Recognition:\n   \"Looking great! Please look at the camera for a quick verification 📸\"\n   [Run face recognition]\n   \"Perfect! Identity confirmed ✅\"\n\n2. Voice Approval:\n   \"Now, please say 'I approve' clearly 🎤\"\n   [Verify voice approval]\n   \"Voice approval confirmed! ✅\"\n\n3. Completion:\n   \"Congratulations! Your vote has been securely recorded 🎉\"\n   \"Would you like me to share your vote on Facebook? 📱\"\n\n# Example Interactions\n\nUser: (speaks) \"Tell me about the candidates\"\nAssistant: (after converting speech to text) \"I'll share details about our candidates! For example, Ahmad Al-Fayez's goals are:\n- Technology: Promote digital education\n- Financial: Support small businesses \n- Environmental: Expand renewable energy\n\nWould you like to hear about other candidates?\"\n\nUser: (speaks) \"I want to vote for Ahmad Al-Fayez\"\nAssistant: \"Great choice! Let's get your vote recorded for Ahmad Al-Fayez! First, please look at the camera for a quick verification 📸\"\n[Face recognition verification]\nAssistant: \"Perfect! Identity confirmed ✅ Now, please say 'I approve' clearly 🎤\"\n[Voice approval verification]\nAssistant: \"Voice approval confirmed! ✅ Congratulations! Your vote for Ahmad Al-Fayez has been securely recorded 🎉 Would you like me to share your vote on Facebook? 📱\"\nUser: (speaks) \"Yes please\"\nAssistant: \"Perfect! I'll post on Facebook: 'I just voted for Ahmad Al-Fayez! 🗳️ #JordanianElections'\"\n[Posts to Facebook]\nAssistant: \"All done! Your vote has been recorded and shared! Thank you for participating in the election! 🌟\"\n\n# Security Rules\n- Never proceed with voting without both face and voice verification\n- Always confirm user consent before posting on social media\n- Keep all verification processes secure and transparent\n- Never make up candidate information - only use data from the knowledge base\n\n{{_knowledge.leen_csv_1}}",
+  "model": "relevance-performance-optimized",
+  "knowledge": [
+    {
+      "knowledge_set": "leen_csv",
+      "usage_type": "instructions"
+    },
+    {
+      "knowledge_set": "wow_csv",
+      "usage_type": "instructions"
+    },
+    {
+      "knowledge_set": "leen_csv_1",
+      "usage_type": "instructions"
+    }
+  ],
+  "actions": [
+    {
+      "emoji": "https://assets.pipedream.net/s.v0/app_XKvhLG/logo/orig",
+      "title": "Voiceflow API Call",
+      "description": "Cloned for agent. Make an authorized request to a Voiceflow API",
+      "prompt_description": "Make an authorized request to a Voiceflow API",
+      "chain_id": "b35158a7-dbd1-4f5e-a873-03860573d603",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://assets.pipedream.net/s.v0/app_D5hMGK/logo/orig",
+      "title": "FaceUp API Call",
+      "description": "Cloned for agent. Make an authorized request to a FaceUp API",
+      "prompt_description": "Make an authorized request to a FaceUp API",
+      "chain_id": "84b1b090-68ea-4606-9d6b-48c6af54a371",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://assets.pipedream.net/s.v0/app_3GhgwJ/logo/orig",
+      "title": "Facebook Graph API Call",
+      "description": "Cloned for agent. Make an authorized request to a Facebook Graph API",
+      "prompt_description": "Make an authorized request to a Facebook Graph API",
+      "chain_id": "e5c612ce-ebde-4fd3-a82d-65c71ecd4a6d",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://assets.pipedream.net/s.v0/app_Xe3hGn/logo/orig",
+      "title": "Invoice Ninja API Call",
+      "description": "Cloned for agent. Make an authorized request to a Invoice Ninja API",
+      "prompt_description": "Make an authorized request to a Invoice Ninja API",
+      "chain_id": "318fb657-cb6c-487c-b0bd-8795942b276a",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://assets.pipedream.net/s.v0/app_Okrhd8/logo/orig",
+      "title": "Voice Monkey API Call",
+      "description": "Cloned for agent. Make an authorized request to a Voice Monkey API",
+      "prompt_description": "Make an authorized request to a Voice Monkey API",
+      "chain_id": "960bf643-987e-4b28-837e-4a0d4cd50787",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://assets.pipedream.net/s.v0/app_Noh9ME/logo/orig",
+      "title": "Zoho Invoice API Call",
+      "description": "Cloned for agent. Make an authorized request to a Zoho Invoice API",
+      "prompt_description": "Make an authorized request to a Zoho Invoice API",
+      "chain_id": "0a45ed34-4f67-4c7e-b430-42136eebb136",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://userdata-f1db6c.stack.tryrelevance.com/files/public/8ea44f0e-3090-4066-a709-1dc33ecdfdfe/notebook-emoji-relevance-ai.png/74b9f288-6a07-4f4b-a966-de1b7ff04980.png",
+      "title": "Add New Record to Knowledge",
+      "description": "Add a new record to knowledge table. Can provide an ID column for the record to only add if it doesn't exist already.",
+      "prompt_description": "Add a new record to knowledge table. Can provide an ID column for the record to only add if it doesn't exist. Leave empty to append.",
+      "chain_id": "be174a64-cc76-46f7-bee5-c8fbe2b30fd7",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "default_values": {
+        "knowledge_table": "knowledge:leen"
+      }
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-pdf.png/160d9f16-dd52-490a-b3e0-661e4e128c6b.png",
+      "title": "Extract Data from PDF",
+      "description": "Automatically extract specified data points from complex PDF documents using advanced OCR and language models.",
+      "chain_id": "4a5c0f77-8599-4488-8ddd-49a8830865f1",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-Google__G__logo.svg.png/347d5d47-3c67-4b99-8c32-545c0788b66c.png",
+      "title": "Perform Google Search",
+      "description": "Retrieve the latest information from the internet on a specified topic using Google Search.",
+      "chain_id": "ade22738-5c16-4509-9c5f-ee53ce3088ee",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-linkedin.png/6a7c68cc-8cc2-47eb-86fa-41da0df606a9.png",
+      "title": "Get Personal Profile from LinkedIn",
+      "description": "Get a personal profile details from LinkedIn given a LinkedIn URL. Returns the `profile_id` and `company_id` which can be used by other tools to get recent posts and more.",
+      "chain_id": "e59d439a-7e0f-437d-98d2-5a6b40e41059",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-Detective emoji.png/025bfcb7-c1c4-4bd8-9261-0e994aed04a8.png",
+      "title": "Research Company and Identify Leads",
+      "description": "Discover detailed information about a company and identify key contacts based on specific roles.",
+      "chain_id": "3e42401b-f04f-446d-a418-37323ac7c0a6",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-E046 color.png/510d360d-7401-422b-a65e-af1b36025252.png",
+      "title": "Extract Company Insights from LinkedIn",
+      "description": "Extract and summarize key insights from a company's LinkedIn profile to aid in personalized outreach.",
+      "chain_id": "78055485-c826-46af-8f29-ff16bf6e5e20",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": ":globe_with_meridians:",
+      "title": "Extract Text From Website URL",
+      "description": "Extract text content from a specified website URL for easy access and analysis.",
+      "chain_id": "c9058778-443d-441c-ab36-39ae594cacc8",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "title": "Generate Image",
+      "description": "Generate an image based on a text prompt and optional reference image urls.",
+      "chain_id": "2a00d325-f857-4e44-a540-79eb8a96bf31",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-Detective emoji.png/8b6c6ffa-3b68-45e0-8a94-65a449105631.png",
+      "title": "Enrich Leads Using Email Address",
+      "description": "Enhance your lead data by retrieving detailed information using just an email address. A tutorial walkthrough is available here: https://youtu.be/7YFyZyVSMXE",
+      "chain_id": "c70166f0-bd96-4329-b16d-ab684fa9301c",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-OpenMoji.png/40f81f24-e26c-489a-b0e4-481f815ada32.png",
+      "title": "Extract Brand Identity from Website",
+      "description": "Retrieve a company's brand identity from their website, including brand voice, tone, messaging, audience, content themes, and value proposition.",
+      "chain_id": "ec3fe48f-e8af-4172-a038-29a7acc2bebe",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-linkedin.png/6a7c68cc-8cc2-47eb-86fa-41da0df606a9.png",
+      "title": "Get Recent Posts from LinkedIn",
+      "description": "Get a set of recent LinkedIn posts by a company or person. Includes their reposts if they've added commentary.",
+      "chain_id": "826aa2fa-910d-4798-82ce-8aec17986fdb",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-Thinking Face Color.png/542762a8-2850-451c-9a8d-4fadcd9d8097.png",
+      "title": "Analyze Text Sentiment",
+      "description": "Determine the sentiment of a given text as Positive, Negative, or Neutral.",
+      "chain_id": "b457fb1a-ba54-4429-8cc7-b6a5168d2962",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-f1db6c.stack.tryrelevance.com/files/public/131a8cc36639-4644-996d-7f6cf7ddf1dd/notebook-emoji-gmail.png/273cc415-19bb-45b4-8b59-e5c8a040fd28.png",
+      "title": "Get Email Content from Gmail",
+      "description": "Retrieve detailed information about an email from Gmail using a specific message ID.",
+      "chain_id": "0f8ea74e-d8e0-4ab2-83f3-f32cc3310345",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-LinkedIn_icon.svg.png/1e34c84d-7cd3-4b31-be61-1c267c979b33.png",
+      "title": "Extract and Summarize LinkedIn Profile",
+      "description": "Retrieve and summarize professional data from a LinkedIn profile. Watch the tutorial video here: https://youtu.be/xFaBRY-9j3g?feature=shared",
+      "chain_id": "115fc428-46ba-45fd-9b69-2bdc6929ec53",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/52b08f900d70-4f2f-b826-320ed7ee16c0/notebook-emoji-google.png/78b0b68c-adeb-4bc2-8c1a-7a41de9579da.png",
+      "title": "Google Search, Scrape and Summarise",
+      "description": "[Updated] Search the internet for information about a topic, person or company. Will scrape multiple of the top search results and filter for key information requested.",
+      "chain_id": "c0ac9e73-3ee1-4a41-8e6e-16f619b37cb2",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-OpenMoji 1F3E2 color.png/ec16c892-de17-4e23-9874-aa9b0026a9f2.png",
+      "title": "Extract Company Insights from Website",
+      "description": "Enhance your prospecting data by extracting and summarizing company insights from their website.",
+      "chain_id": "04a4988a-94d7-4e24-9b57-192172e339a7",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "title": "Send Email via Gmail",
+      "description": "Send a Gmail email with your Google Account. Can maintain conversation by providing message and thread id.",
+      "chain_id": "5f1e8768-d0e4-4c69-8cf6-4a284c502851",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "overrides": {
+        "params_schema": {
+          "properties": {
+            "oauth_account_id": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            },
+            "from_name": {
+              "metadata": {
+                "is_fixed_param": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-linkedin.png/6a7c68cc-8cc2-47eb-86fa-41da0df606a9.png",
+      "title": "Get Company Profile from LinkedIn",
+      "description": "Get company profile details from LinkedIn given a LinkedIn URL. Returns the `company_id` which can be used by other tools to get recent posts and more.",
+      "chain_id": "4aa9dd6c-9002-42c6-bb4a-7d9235ab49df",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-extract_website_content-cyan.png/b1984863-e56c-402b-bf64-b7bcd8b0c02d.png",
+      "title": "Extract and Summarize Website Content",
+      "description": "Extracts content from a specified website and summarizes it according to a defined objective.",
+      "chain_id": "f0d505e1-6939-4bf4-ba43-d4762de12e07",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-f1db6c.stack.tryrelevance.com/files/public/7f52c5f2-34d3-4f45-ae56-489ded0c4a7d/notebook-emoji-google_meets.png/21661e75-a7d0-4cd9-8db0-8cae1a874a9d.png",
+      "title": "Create Meet Event in Google Calendar",
+      "description": "Create a Google Meet event in your Google Calendar and send invites automatically.",
+      "prompt_description": "Create a Google Meet event in your Google Calendar and send invites automatically.",
+      "chain_id": "c20fe84e-b91a-4cd4-b309-8c9b80b186f7",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask",
+      "default_values": {}
+    },
+    {
+      "emoji": ":speaking_head_in_silhouette:",
+      "title": "Adjust Text Tone and Format",
+      "description": "Modify the tone and format of text for Satya's Knowledge Q&A agent.",
+      "chain_id": "c28233ca-a6da-4c2e-a175-2d05e693d741",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://userdata-bcbe5a.stack.tryrelevance.com/files/public/4dc088f2dcfc-4e60-807e-353c334d4a5b/notebook-emoji-OpenMoji 1F4CA color.png/20494d92-5839-4f93-85a4-4a183caf57c6.png",
+      "title": "Analyze CSV Data",
+      "description": "Analyze CSV data by asking specific questions to extract meaningful insights.",
+      "chain_id": "b070c298-bd30-4faf-814c-4c53656b0f28",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "title": "Extract Webpage Content",
+      "description": "Scrape content from a webpage URL.",
+      "chain_id": "63f7155c-8ec2-4df4-9407-65856dcbc93d",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://cdn.jsdelivr.net/gh/RelevanceAI/content-cdn@latest/transformations/icons/general_handle_files-gray.svg",
+      "title": "Convert audio to text (Open AI)",
+      "description": "",
+      "prompt_description": "Extract text from an audio file using OpenAI.",
+      "chain_id": "6c9d4c01-701e-478d-bb71-adbffca2b7c7",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    },
+    {
+      "emoji": "https://cdn.jsdelivr.net/gh/RelevanceAI/content-cdn@latest/transformations/icons/general_handle_files-gray.svg",
+      "title": "Convert audio to text (Open AI)",
+      "description": "",
+      "prompt_description": "Extract text from an audio file using OpenAI.",
+      "chain_id": "69dc5353-5e69-4457-ade1-9f824fced40c",
+      "project": "fb555293-6267-4ba7-9a0b-d7c9da773311",
+      "region": "d7b62b",
+      "action_behaviour": "never-ask"
+    }
+  ],
+  "action_behaviour": "always-ask",
+  "custom_metadata": {
+    "system_prompt": "You must explicitly call add_conversation_metadata tool whenever the metadata values (defined by the different input(s) to this tool and their descriptions) have changed. Ensure to keep the metadata up to date with information during your task particularly at the end when you've completed the task, before reporting back on your outcome, or calling another agent. Remember, if new information hasn't changed the metadata values there is no need to update them.",
+    "read_metadata_system_prompt": "Use the read_conversation_metadata tool ONLY when you need to access current metadata values that are not already available in your conversation context. Do not call this tool if metadata information is already present in the conversation history or context. Only use it when you specifically need to refresh or retrieve metadata that is missing from your current context to make informed decisions or take actions."
+  },
+  "thinking_tool": {
+    "enabled": true
+  },
+  "suggest_replies": true,
+  "starting_messages": [
+    {
+      "message": {
+        "role": "agent",
+        "content": "Hello, this is Vota, your personal guide to help you in the voting process. I am here to make you vote for the right person. Please tell me more about you and what you look for in life."
+      },
+      "metadata": {
+        "welcome_message": true
+      }
+    }
+  ],
+  "model_options": {}
+}
